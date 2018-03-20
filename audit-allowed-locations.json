@@ -2,12 +2,12 @@
   "properties": {
     "displayName": "Allowed locations",
     "policyType": "BuiltIn",
-    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements.",
+    "description": "This policy enables you to audit the locations where your resources have been deployed. Use this to understand what is within your environment and if it matches company guidelines.",
     "parameters": {
       "listOfAllowedLocations": {
         "type": "Array",
         "metadata": {
-          "description": "The list of locations that can be specified when deploying resources.",
+          "description": "The list of locations to audit against.",
           "strongType": "location",
           "displayName": "Allowed locations"
         }
