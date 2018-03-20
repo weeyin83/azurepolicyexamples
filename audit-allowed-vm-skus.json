@@ -3,12 +3,12 @@
   "properties": {
     "displayName": "Allows VM SKUs",
     "policyType": "BuiltIn",
-    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements.",
+    "description": "This policy enables you to audit the virtual machine SKUs that have been deployed. Use to understand what is within your environment before enforcing a policy.",
     "parameters": {
       "listOfAllowedSKUs": {
         "type": "Array",
         "metadata": {
-          "description": "The list of locations that can be specified when deploying resources.",
+          "description": "The list of locations that can be deployed.",
           "strongType": "vmSKUs",
           "displayName": "Allowed SKUs"
         }
