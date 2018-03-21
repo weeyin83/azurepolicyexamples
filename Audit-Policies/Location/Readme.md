@@ -7,3 +7,11 @@
 
 
 ## Try with CLI
+
+````cli
+
+az policy definition create --name 'audit-location-deployments' --display-name 'Audit for approved datacentre locations' --description 'Ensure approved datacentres are being utilised for deployed resources' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Audit-Policies/Location/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Audit-Policies/Location/azurepolicy.parameters.json' --mode All
+
+az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-location-deployments" 
+
+````
