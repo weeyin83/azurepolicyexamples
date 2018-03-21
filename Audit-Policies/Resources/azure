@@ -1,0 +1,14 @@
+{
+  "if": {
+
+    "not": {
+
+      "field": "type",
+
+      "in": "[parameters('listOfResourceTypesAllowed')]"
+
+    }
+
+  }
+
+}
