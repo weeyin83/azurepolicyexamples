@@ -28,7 +28,7 @@ az policy assignment create --name <assignmentname> --scope <scope> --policy "al
 
 ````
 
-## Example with PowerShell
+## Example number 1 with PowerShell
 ````powershell
 #Define allowed publishers
 $allowedpublishers = "Canonical", "MicrosoftWindowsServer", "RedHat"
@@ -41,6 +41,22 @@ $definition = New-AzureRmPolicyDefinition -Name "allowed-image-publishers-policy
 $definition
 
 #Create Policy assignment using the new definition
-$assignment = New-AzureRMPolicyAssignment -Name "Canonical-RedHat-WindowsServer-only-policy" -Scope $ResourceGroup.ResourceId" -sku @{"Name" = "A1"; "Tier" = "Standard"} -listOfAllowedimagePublisher $allowedpublishers -PolicyDefinition $definition
+$assignment = New-AzureRMPolicyAssignment -Name "Canonical-RedHat-WindowsServer-only-policy" -Scope $ResourceGroup.ResourceId -sku @{"Name" = "A1"; "Tier" = "Standard"} -listOfAllowedimagePublisher $allowedpublishers -PolicyDefinition $definition
+$assignment 
+````
+## Example number 2 with PowerShell
+````powershell
+#Define allowed publishers
+$allowedpublishers = "Canonical", "MicrosoftWindowsServer", "RedHat"
+
+#Define Subscription Policy will be applied to
+$Subscription = Get-AzureRMSubscription -SubscriptionName "Production"
+
+#Setup Policy Defintion
+$definition = New-AzureRmPolicyDefinition -Name "allowed-image-publishers-policy" -DisplayName "Only allow a certain image publishers offerings to be deployed" -description "This policy ensures that only allowed image publisher offerings are selected from the image repository" -Policy 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Compute/allowed-image-publishers/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Compute/allowed-image-publishers/azurepolicy.parameters.json' -Mode All
+$definition
+
+#Create Policy assignment using the new definition
+$assignment = New-AzureRMPolicyAssignment -Name "Canonical-RedHat-WindowsServer-only-policy" -Scope "/subscriptions/$subscription" -sku @{"Name" = "A1"; "Tier" = "Standard"} -listOfAllowedimagePublisher $allowedpublishers -PolicyDefinition $definition
 $assignment 
 ````
