@@ -1,0 +1,42 @@
+{
+    "type": "Microsoft.Authorization/policyDefinitions",
+    "name": "allowed-publisher-policy",
+    "properties": {
+        "displayName": "Only allow a certain VM publishers images to be deployed",
+        "description": "This policy ensures that only certain approved image publisher deployments are allowed",
+        "parameters": {},
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "in": [
+                            "Microsoft.Compute/virtualMachines",
+                            "Microsoft.Compute/VirtualMachineScaleSets"
+                        ]
+                    },
+                    {
+                        "not": {
+                            "allOf": [
+                                {
+                                    "field": "Microsoft.Compute/imagePublisher",
+                                    "in": [
+                                        "Canonical",
+                                        "MicrosoftWindowsServer",
+                                        "Redhat",
+                                        "Microsoft.SqlServer.Management",
+                                        "MicrosoftSQLServer",
+                                        "MicrosoftAzureSiteRecovery"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "then": {
+                "effect": "deny"
+            }
+        }
+    }
+}
