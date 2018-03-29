@@ -2,8 +2,8 @@
     "type": "Microsoft.Authorization/policyDefinitions",
     "name": "allowed-image-publishers-policy",
     "properties": {
-        "displayName": "Only allow a certain VM platform image",
-        "description": "This policy ensures that only UbuntuServer, Canonical is allowed from the image repository",
+        "displayName": "Only allow a certain image publishers offerings to be deployed",
+        "description": "This policy ensures that only allowed image publisher offerings are selected from the image repository",
         "parameters": {
             "listOfAllowedimagePublisher": {
                 "type": "Array",
