@@ -1,10 +1,19 @@
 {
     "type": "Microsoft.Authorization/policyDefinitions",
-    "name": "allowed-publisher-policy",
+    "name": "platform-image-policy",
     "properties": {
-        "displayName": "Only allow a certain VM publishers images to be deployed",
-        "description": "This policy ensures that only certain approved image publisher deployments are allowed",
-        "parameters": {},
+        "displayName": "Only allow a certain VM platform image",
+        "description": "This policy ensures that only UbuntuServer, Canonical is allowed from the image repository",
+        "parameters": {
+            "listOfAllowedimagePublisher": {
+                "type": "Array",
+                "metadata": {
+                    "description": "The list of publishers to audit against.",
+                    "strongType": "imagePublisher",
+                    "displayName": "Allowed image publisher"
+                }
+            }
+        },
         "policyRule": {
             "if": {
                 "allOf": [
@@ -20,14 +29,7 @@
                             "allOf": [
                                 {
                                     "field": "Microsoft.Compute/imagePublisher",
-                                    "in": [
-                                        "Canonical",
-                                        "MicrosoftWindowsServer",
-                                        "Redhat",
-                                        "Microsoft.SqlServer.Management",
-                                        "MicrosoftSQLServer",
-                                        "MicrosoftAzureSiteRecovery"
-                                    ]
+                                    "in": "[parameters('listOfAllowedimagePublisher')]"
                                 }
                             ]
                         }
