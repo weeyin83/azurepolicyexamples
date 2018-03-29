@@ -1,0 +1,29 @@
+# Only allow certain image publishers from the Marketplace deployments
+
+Ensure that only the image publishers that you allow within your environment can be deployed
+
+
+## Try on Portal
+
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fweeyin83%2Fazurepolicyexamples%2Fmaster%2FCompute%2Fallowed-image-publishers%2Fazurepolicy.json)
+
+
+## Try with PowerShell
+
+````powershell
+$definition = New-AzureRmPolicyDefinition -Name "allowed-image-publishers-policy" -DisplayName "Only allow a certain image publishers offerings to be deployed" -description "This policy ensures that only allowed image publisher offerings are selected from the image repository" -Policy 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Compute/allowed-image-publishers/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Compute/allowed-image-publishers/azurepolicy.parameters.json' -Mode All
+$definition
+$assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope>  -PolicyDefinition $definition
+$assignment 
+````
+
+
+## Try with CLI
+
+````cli
+
+az policy definition create --name 'allowed-image-publishers-policy' --display-name 'Only allow a certain image publishers offerings to be deployed' --description 'This policy ensures that only allowed image publisher offerings are selected from the image repository' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Compute/allowed-image-publishers/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Compute/allowed-image-publishers/azurepolicy.parameters.json' --mode All
+
+az policy assignment create --name <assignmentname> --scope <scope> --policy "allowed-image-publishers-policy" 
+
+````
