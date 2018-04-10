@@ -6,8 +6,8 @@ When you create policy assignments with PowerShell or CLI remember to assign a p
 
 Within PowerShell use the following addition to your New-AzureRMPolicyAssignment command: 
 
--sku @{"Name" = "A1"; "Tier" = "Standard"}
+**-sku @{"Name" = "A1"; "Tier" = "Standard"}**
 
 Wthin CLI use the following addition to your az policy assignment create command: 
 
---sku 'standard'
+**--sku 'standard'**
