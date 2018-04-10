@@ -1,0 +1,47 @@
+{
+    "properties": {
+        "displayName": "Audit missing tags",
+        "description": "Audit resources that doesn't have particular tag",
+        "mode": "all",
+        "parameters": {
+            "tagName": {
+                "type": "String",
+                "metadata": {
+                    "description": "Name of the tag, such as costCenter",
+                    "strongType": "tagName"
+                }
+            }
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [{
+                        "field": "type",
+                        "in": [
+                            "Microsoft.Resources/subscriptions/resourceGroups",
+                            "Microsoft.Compute/virtualMachines",
+                            "Microsoft.Compute/VirtualMachineScaleSets",
+                            "Microsoft.Storage/storageAccounts",
+                            "Microsoft.Automation/automationAccounts",
+                            "microsoft.automation/automationaccounts",
+                            "Microsoft.Automation/automationAccounts/runbooks",
+                            "Microsoft.Network/networkInterfaces",
+                            "Microsoft.Network/networkSecurityGroups",
+                            "Microsoft.Network/publicIPAddresses",
+                            "Microsoft.Network/virtualNetworks",
+                            "Microsoft.Compute/disks",
+                            "microsoft.resources/subscriptions/resourcegroups",
+                            "microsoft.automation/automationaccounts/runbooks"
+                        ]
+                    },
+                    {
+                        "field": "[concat('tags[',parameters('tagName'), ']')]",
+                        "exists": false
+                    }
+                ]
+            },
+            "then": {
+                "effect": "audit"
+            }
+        }
+    }
+}
