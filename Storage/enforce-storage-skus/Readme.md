@@ -11,7 +11,7 @@ Ensure only approved Storage SKUs can be deployed
 ## Try with PowerShell
 
 ````powershell
-$definition = New-AzureRmPolicyDefinition -Name "audit-location-deployments" -DisplayName "Audit for approved datacentre locations" -description "Ensure approved datacentres are being utilised for deployed resources" -Policy 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.parameters.json' -Mode All
+$definition = New-AzureRmPolicyDefinition -Name "enforce-storage-skus" -DisplayName "Ensure deployment of allowed Storage SKUs only" -description "Ensure only approved Storage SKUs can be deployed" -Policy 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.parameters.json' -Mode All
 $definition
 $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope>  -PolicyDefinition $definition
 $assignment 
@@ -22,8 +22,18 @@ $assignment
 
 ````cli
 
-az policy definition create --name 'audit-location-deployments' --display-name 'Audit for approved datacentre locations' --description 'Ensure approved datacentres are being utilised for deployed resources' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Audit-Policies/Location/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Audit-Policies/Location/azurepolicy.parameters.json' --mode All
+az policy definition create --name 'enforce-storage-skus' --display-name 'Ensure deployment of allowed Storage SKUs only' --description 'Ensure only approved Storage SKUs can be deployed' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.parameters.json' --mode All
 
-az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-location-deployments" 
+az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-storage-skus" 
 
 ````
+
+## CLI Example 1
+
+Deploys the policy to an entire subscription, using the Standard Azure Policy price tier and only allows Standard GRS storage to be used. 
+
+````cli
+
+az policy definition create --name 'enforce-storage-skus' --display-name 'Ensure deployment of allowed Storage SKUs only' --description 'Ensure only approved Storage SKUs can be deployed' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.parameters.json' --mode All
+
+az policy assignment create --name 'enforce storage' --scope '/subscriptions/00000000-0000-0000-000000000000' --policy "enforce-storage-skus" --params '{"listOfAllowedSKUs":{"value": [ "Standard_GRS"]}}' --sku 'standard'
