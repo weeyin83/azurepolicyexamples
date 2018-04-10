@@ -1,4 +1,4 @@
-![alt text](./images/azurepolicy.jpg "Azure Policy Tips and Tricks")
+![alt text](./images/azurepolicyimage.jpg "Azure Policy Tips and Tricks")
 
 # Tips and Tricks
 
