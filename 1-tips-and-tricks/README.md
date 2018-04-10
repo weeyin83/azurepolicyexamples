@@ -1,3 +1,5 @@
+(.images/azurepolicyimage.jpg)
+
 # Tips and Tricks
 
 ## Assigning policies with PowerShell or CLI
