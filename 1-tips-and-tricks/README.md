@@ -1,4 +1,4 @@
-(.images/azurepolicyimage.jpg)
+![alt text](./images/azurepolicy.jgp "Azure Policy Tips and Tricks")
 
 # Tips and Tricks
 
