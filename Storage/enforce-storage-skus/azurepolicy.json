@@ -1,0 +1,37 @@
+
+{
+  "properties": {
+    "displayName": "Audit Storage SKUs",
+    "policyType": "Custom",
+    "description": "This policy enables you audit storage SKUs within your environment and see if any have been deployed which shouldn't be. Use to audit if company policy has been followed.",
+    "parameters": {
+      "listOfAllowedSKUs": {
+        "type": "Array",
+        "metadata": {
+          "description": "The list of storage SKUs that can be specified when deploying resources.",
+          "strongType": "storageSkus",
+          "displayName": "Allowed Storage SKUs"
+        }
+      }
+    },
+    "policyRule": {
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "not": {
+          "field": "Microsoft.Storage/storageAccounts/sku.name",
+          "in": "[parameters('listOfAllowedSKUs')]"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "Deny"
+  }
+}
+}
+}
