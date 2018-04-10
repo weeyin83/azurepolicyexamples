@@ -27,3 +27,13 @@ az policy definition create --name 'enforce-storage-skus' --display-name 'Ensure
 az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-storage-skus" 
 
 ````
+
+## CLI Example 1
+
+Deploys the policy to an entire subscription, using the Standard Azure Policy price tier and only allows Standard GRS storage to be used. 
+
+````cli
+
+az policy definition create --name 'enforce-storage-skus' --display-name 'Ensure deployment of allowed Storage SKUs only' --description 'Ensure only approved Storage SKUs can be deployed' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.parameters.json' --mode All
+
+az policy assignment create --name 'enforce storage' --scope '/subscriptions/00000000-0000-0000-000000000000' --policy "enforce-storage-skus" --params '{"listOfAllowedSKUs":{"value": [ "Standard_GRS"]}}' --sku 'standard'
