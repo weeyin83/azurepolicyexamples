@@ -1,6 +1,6 @@
 # Azure Policy Examples
 
-This repository contains samples of custom created Azure Policies that can be used as within your own environment.  I've also got a section for [Tips and Tricks](../blob/master/1-tips-and-tricks/README.md)
+This repository contains samples of custom created Azure Policies that can be used as within your own environment.  I've also got a section for [Tips and Tricks](../master/1-tips-and-tricks/README.md)
 
 ## Credits
 Written by: Sarah Lean
