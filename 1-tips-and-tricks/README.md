@@ -47,7 +47,7 @@ az policy assignment create --name 'enforce storage' --scope '/subscriptions/000
 
 When you create a policy definition you can choose to have a field that uses dynamic entries.  When you use try to create an assignment of one of the policies you will be asked for the values, within the GUI the synatx for adding multiple values use a **;** between values with no spaces.  Below is a screenshot demonstrating this syntax:
 
-![alt text](./images/parametersyntax "Parameter Syntax")
+![alt text](./images/parametersyntax.png "Parameter Syntax")
 
 
 
