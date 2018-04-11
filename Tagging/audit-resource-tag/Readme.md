@@ -16,6 +16,7 @@ Audit to ensure your resources are being tagged with a specific tag.  This templ
 * MySQL Server
 * Cosmos DB Servers
 * Load Balancers
+* SQL Databases
 
 ## Try on Portal
 

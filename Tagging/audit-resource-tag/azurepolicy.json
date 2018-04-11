@@ -33,7 +33,9 @@
                             "microsoft.automation/automationaccounts/runbooks",
                             "Microsoft.DBforMySQL/servers",
                             "Microsoft.Network/loadBalancers",
-                            "Microsoft.DocumentDB/databaseAccounts"
+                            "Microsoft.DocumentDB/databaseAccounts",
+                            "Microsoft.Sql/servers/databases",
+                            "Microsoft.Sql/servers"
                         ]
                     },
                     {
