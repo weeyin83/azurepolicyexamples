@@ -3,12 +3,10 @@
 # Tips and Tricks
 
 # Table of contents
-- [Tips and Tricks](#tips-and-tricks)
-- [Table of contents](#table-of-contents)
-  * [Assigning policies with PowerShell or CLI](#assigning-policies-with-powershell-or-cli)
+- [Assigning policies with PowerShell or CLI](#assigning-policies-with-powershell-or-cli)
     + [PowerShell Example](#powershell-example)
     + [CLI Example](#cli-example)
-  * [Syntax for Parameters](#syntax-for-parameters)
+- [Syntax for Parameters](#syntax-for-parameters)
 
 
 [I'm a relative reference to a repository file](../blob/master/LICENSE)
