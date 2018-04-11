@@ -43,11 +43,13 @@ az policy definition create --name 'enforce-storage-skus' --display-name 'Ensure
 az policy assignment create --name 'enforce storage' --scope '/subscriptions/00000000-0000-0000-000000000000' --policy "enforce-storage-skus" --params '{"listOfAllowedSKUs":{"value": [ "Standard_GRS"]}}' --sku 'standard'
 ````
 
-##Using Parameters
+##Syntax for Parameters
 
 When you create a policy definition you can choose to have a field that uses dynamic entries.  When you use try to create an assignment of one of the policies you will be asked for the values, within the GUI the synatx for adding multiple values use a **;** between values with no spaces.  Below is a screenshot demonstrating this syntax:
 
-![alt text](./images/parametersyntax.png "Parameter Syntax")
+![alt text](./images/parametersyntax.PNG "Parameter Syntax")
+
+
 
 
 
