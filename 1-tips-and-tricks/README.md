@@ -2,6 +2,17 @@
 
 # Tips and Tricks
 
+# Table of contents
+- [Tips and Tricks](#tips-and-tricks)
+- [Table of contents](#table-of-contents)
+  * [Assigning policies with PowerShell or CLI](#assigning-policies-with-powershell-or-cli)
+    + [PowerShell Example](#powershell-example)
+    + [CLI Example](#cli-example)
+  * [Syntax for Parameters](#syntax-for-parameters)
+
+
+[I'm a relative reference to a repository file](../blob/master/LICENSE)
+
 ## Assigning policies with PowerShell or CLI
 
 When you create policy assignments with PowerShell or CLI remember to assign a pricing tier/SKU within your command.  If you don't specify a pricing tier/SKU it will automatically default to the Free tier.  With the Free tier you can only enforce policies on future resources, with Standard, you can also enforce them on existing resources. 
