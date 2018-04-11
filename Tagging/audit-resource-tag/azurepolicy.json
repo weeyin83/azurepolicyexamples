@@ -30,7 +30,10 @@
                             "Microsoft.Network/virtualNetworks",
                             "Microsoft.Compute/disks",
                             "microsoft.resources/subscriptions/resourcegroups",
-                            "microsoft.automation/automationaccounts/runbooks"
+                            "microsoft.automation/automationaccounts/runbooks",
+                            "Microsoft.DBforMySQL/servers",
+                            "Microsoft.Network/loadBalancers",
+                            "Microsoft.DocumentDB/databaseAccounts"
                         ]
                     },
                     {
