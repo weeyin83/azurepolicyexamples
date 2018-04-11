@@ -1,6 +1,21 @@
 # Audit your resources for a specific tag
 
-Audit to ensure your resources are being tagged with a specific tag
+Audit to ensure your resources are being tagged with a specific tag.  This template currently audits the following resources:
+
+* Resource Groups
+* Virtual Machines
+* Virtual Machine Scale Sets
+* Storage Accounts
+* Automation Accounts
+* Runbooks
+* Network Interfaces
+* Network Security Groups
+* Public IP Address
+* Virtual Networks
+* Disks
+* MySQL Server
+* Cosmos DB Servers
+* Load Balancers
 
 ## Try on Portal
 
