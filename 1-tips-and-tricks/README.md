@@ -12,6 +12,9 @@ Below are some tips and tricks that I picked up while working with Azure Policy 
 - [Syntax for Parameters](#syntax-for-parameters)
     + [GUI Syntax](#gui-syntax)
     + [Code Syntax](#code-syntax)
+- [Using Parameters](#using-parameters)
+    + [Powershell Parameters](#powershell-parameters)
+    + [CLI Parameters](#cli-parameters)
 
 ## Assigning policies with PowerShell or CLI
 
@@ -75,9 +78,9 @@ When you are using static parameter entries within your policy definitions the c
 
 When you assign policies using PowerShell or CLI you may have to define parameters within your code lines. The best way I have I have found to do this within both lanaguages is as follows:
 
-### PowerShell
+### PowerShell Parameters
 
-### CLI
+### CLI Parameters
 
 The first thing you need to do is define your policy, in this example I am going to be using a policy that enforces which datacentre locations I am allowed to deploy resources into.  Within the policy that I am using there is a parameter called "listOfAllowedLocations" that will need to be defined.  I will use the following CLI code to define the policy:
 
