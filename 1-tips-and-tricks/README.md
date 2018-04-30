@@ -29,6 +29,7 @@ Wthin CLI use the following addition to your az policy assignment create command
 **--sku 'standard'**
 
 ### PowerShell Example
+
 Below is an example of the code you would use to create a policy definition with PowerShell and then create the policy assignment including the Standard SKU.
 
 ````powershell
