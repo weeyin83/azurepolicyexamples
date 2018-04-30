@@ -5,6 +5,7 @@
 Below are some tips and tricks that I picked up while working with Azure Policy - enjoy!
 
 # Table of contents
+
 - [Assigning policies with PowerShell or CLI](#assigning-policies-with-powershell-or-cli)
     + [PowerShell Example](#powershell-example)
     + [CLI Example](#cli-example)
@@ -12,23 +13,20 @@ Below are some tips and tricks that I picked up while working with Azure Policy 
     + [GUI Syntax](#gui-syntax)
     + [Code Syntax](#code-syntax)
 
-
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
-
 ## Assigning policies with PowerShell or CLI
 
 When you create policy assignments with PowerShell or CLI remember to assign a pricing tier/SKU within your command.  If you don't specify a pricing tier/SKU it will automatically default to the Free tier.  With the Free tier you can only enforce policies on future resources, with Standard, you can also enforce them on existing resources. 
 
-Within PowerShell use the following addition to your New-AzureRMPolicyAssignment command: 
+Within PowerShell use the following addition to your New-AzureRMPolicyAssignment command:
 
 **-sku @{"Name" = "A1"; "Tier" = "Standard"}**
 
-Wthin CLI use the following addition to your az policy assignment create command: 
+Wthin CLI use the following addition to your az policy assignment create command:
 
 **--sku 'standard'**
 
 ### PowerShell Example
-Below is an example of the code you would use to create a policy definition with PowerShell and then create the policy assignment including the Standard SKU. 
+Below is an example of the code you would use to create a policy definition with PowerShell and then create the policy assignment including the Standard SKU.
 
 ````powershell
 #Define allowed publishers
@@ -43,11 +41,12 @@ $definition
 
 #Create Policy assignment using the new definition
 $assignment = New-AzureRMPolicyAssignment -Name "Canonical-RedHat-WindowsServer-only-policy" -Scope $ResourceGroup.ResourceId -sku @{"Name" = "A1"; "Tier" = "Standard"} -listOfAllowedimagePublisher $allowedpublishers -PolicyDefinition $definition
-$assignment 
+$assignment
 ````
 
 ### CLI Example
-Below is an example of the code you would use to create a policy definition with CLI and then create the policy assignment including the Standard SKU. 
+
+Below is an example of the code you would use to create a policy definition with CLI and then create the policy assignment including the Standard SKU.
 
 ````cli
 
@@ -58,22 +57,16 @@ az policy assignment create --name 'enforce storage' --scope '/subscriptions/000
 
 ## Syntax for Parameters
 
-When you create a policy definition you can choose to have a field that uses dynamic entries.  
+When you create a policy definition you can choose to have a field that uses dynamic entries.
 
 ### GUI Syntax
+
 When you use try to create an assignment of one of the policies you will be asked for the values, within the GUI the synatx for adding multiple values use a **;** between values with no spaces.  Below is a screenshot demonstrating this syntax:
 
 ![alt text](./images/parametersyntax.PNG "GUI Parameter Syntax")
 
 ### Code Syntax
 
-When you are using static parameter entries within your policy definitions the correct syntax for adding mutliple values is to using quotation marks around each entry, followed by a comma and then a space before the next value.  Below is a screenshot demonstrating this: 
+When you are using static parameter entries within your policy definitions the correct syntax for adding mutliple values is to using quotation marks around each entry, followed by a comma and then a space before the next value.  Below is a screenshot demonstrating this:
 
 ![alt text](./images/parametersyntax1.png "Code Parameter Syntax")
-
-
-
-
-
-
-
