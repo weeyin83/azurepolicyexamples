@@ -1,0 +1,12 @@
+{
+
+      "listOfAllowedLocations": {
+        "type": "Array",
+        "metadata": {
+          "description": "The list of locations to enforce against.",
+          "strongType": "location",
+          "displayName": "Allowed locations"
+        }
+      }
+
+      }

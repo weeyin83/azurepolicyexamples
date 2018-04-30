@@ -1,0 +1,28 @@
+{
+  "properties": {
+    "displayName": "Allowed locations",
+    "policyType": "BuiltIn",
+    "description": "This policy enables you to control the locations where your resources are allowed to be deployed. Use this to enforce company guidelines.",
+    "parameters": {
+      "listOfAllowedLocations": {
+        "type": "Array",
+        "metadata": {
+          "description": "The list of locations to enforce against.",
+          "strongType": "location",
+          "displayName": "Allowed locations"
+        }
+      }
+    },
+    "policyRule": {
+      "if": {
+        "not": {
+          "field": "location",
+          "in": "[parameters('listOfAllowedLocations')]"
+        }
+      },
+      "then": {
+        "effect": "Deny"
+      }
+    }
+  }
+}
