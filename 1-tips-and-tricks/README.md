@@ -70,3 +70,30 @@ When you use try to create an assignment of one of the policies you will be aske
 When you are using static parameter entries within your policy definitions the correct syntax for adding mutliple values is to using quotation marks around each entry, followed by a comma and then a space before the next value.  Below is a screenshot demonstrating this:
 
 ![alt text](./images/parametersyntax1.png "Code Parameter Syntax")
+
+## Using Parameters
+
+When you assign policies using PowerShell or CLI you may have to define parameters within your code lines. The best way I have I have found to do this within both lanaguages is as follows:
+
+### PowerShell
+
+### CLI
+
+The first thing you need to do is define your policy, in this example I am going to be using a policy that enforces which datacentre locations I am allowed to deploy resources into.  Within the policy that I am using there is a parameter called "listOfAllowedLocations" that will need to be defined.  I will use the following CLI code to define the policy:
+
+````cli
+az policy definition create --name 'enforce-location-deployments' --display-name 'Enforce Datacentre Locations' --description 'This policy enables you to control the locations where your resources are allowed to be deployed. Use this to enforce company guidelines.
+' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Location/enforce-allowed-azurelocations/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Location/enforce-allowed-azurelocations/azurepolicy.parameters.json' --mode All
+````
+
+Now that the policy definition is in place I can create an assignment. I need to remember to define the "listOfAllowedLocations" parameter within my code.  In this scenario I am going to set it so that only resources can be deployed to the UK West and UK South datacentres for my subscription:
+
+````cli
+az policy assignment create --name 'Enforce deployment to UK datacentres only' --scope '/subscriptions/00000000-0000-0000-000000000000' --policy "enforce-location-deployments" --params '{"listOfAllowedLocations":{"value": [ "ukwest", "uksouth"]}}' --sku 'standard'
+````
+
+As you can see above I used the command **--params** and then listed the name of the parameter just as it was listed in the policy definition then defined my values.  It's worth noting that while defining the values I had to use **quotation marks** around each value and seperated multiple values with a **comma**.  Also the datacentre location values are case sensitive and have to be inputted as expected.  So for example you can't use *UKWest*, it must be *ukwest*.  If you are unsure of how to define a datacentre location run the following command and it will show you the correct syntax:
+
+````cli
+az account list-locations
+````
