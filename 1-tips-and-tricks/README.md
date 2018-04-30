@@ -18,7 +18,7 @@ Below are some tips and tricks that I picked up while working with Azure Policy 
 
 ## Assigning policies with PowerShell or CLI
 
-When you create policy assignments with PowerShell or CLI remember to assign a pricing tier/SKU within your command.  If you don't specify a pricing tier/SKU it will automatically default to the Free tier.  With the Free tier you can only enforce policies on future resources, with Standard, you can also enforce them on existing resources. 
+When you create policy assignments with PowerShell or CLI remember to assign a pricing tier/SKU within your command.  If you don't specify a pricing tier/SKU it will automatically default to the Free tier.  With the Free tier you can only enforce policies on future resources, with Standard, you can also enforce them on existing resources.
 
 Within PowerShell use the following addition to your New-AzureRMPolicyAssignment command:
 
@@ -80,6 +80,27 @@ When you are using static parameter entries within your policy definitions the c
 When you assign policies using PowerShell or CLI you may have to define parameters within your code lines. The best way I have I have found to do this within both lanaguages is as follows:
 
 ### PowerShell Parameters
+
+Within PowerShell you can use variables to set the parameters that your policy needs.  We should first define the policy that we want to use.  In this example I am going to use a policy that only allows certain Storage SKUs to deployed. So to define the policy I will run this code: 
+
+````Powershell
+$definition = New-AzureRmPolicyDefinition -Name "enforce-storage-skus" -DisplayName "Ensure deployment of allowed Storage SKUs only" -description "Ensure only approved Storage SKUs can be deployed" -Policy 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.parameters.json' -Mode All
+````
+
+Now with the policy defined I can start to define how the policy will be used within my environment.  The policy I have used has the parameter **listOfAllowedSKUs** that needs to be defined. I am only going to allow Standard SKUs to be used so I will define this by using a variable:
+
+````PowerShell
+$allowedskus = "Standard_LRS", "Standard_GRS", "Standard_RAGRS"
+````
+
+Note I surround each SKU with **quotations** and then seperate the multiple values with a **comma**
+
+Now that the parameter has been defined I can look to create the assignment:
+
+````PowerShell
+$assignment = New-AzureRMPolicyAssignment -Name "Only allow deployment of Standard SKUs" -Scope /subscriptions/00000000-0000-0000-0000-000000000000 -sku @{"Name" = "A1"; "Tier" = "Standard"} -listOfAllowedSKUs $allowedskus -PolicyDefinition $definition
+$assignment
+`````
 
 ### CLI Parameters
 
