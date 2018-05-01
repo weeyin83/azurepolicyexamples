@@ -1,8 +1,9 @@
 {
   "properties": {
     "displayName": "Allowed locations",
-    "policyType": "BuiltIn",
+    "policyType": "Custom",
     "description": "This policy enables you to audit the locations where your resources have been deployed. Use this to understand what is within your environment and if it matches company guidelines.",
+    "Mode": "All",
     "parameters": {
       "listOfAllowedLocations": {
         "type": "Array",

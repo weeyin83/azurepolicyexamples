@@ -4,6 +4,7 @@
     "displayName": "Audit Storage SKUs",
     "policyType": "Custom",
     "description": "This policy enables you audit storage SKUs within your environment and see if any have been deployed which shouldn't be. Use to audit if company policy has been followed.",
+    "Mode": "All",
     "parameters": {
       "listOfAllowedSKUs": {
         "type": "Array",

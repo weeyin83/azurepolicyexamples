@@ -25,7 +25,7 @@ Audit to ensure your resources are being tagged with a specific tag.  This templ
 ## Try with PowerShell
 
 ````powershell
-$definition = New-AzureRmPolicyDefinition -Name "audit-resource-tag" -DisplayName "Audit for specific resource tag" -description "Audit to ensure your resources are being tagged with a specific tag" -Policy 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Tagging/audit-resource-tag/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/ATagging/audit-resource-tag/azurepolicy.parameters.json' -Mode All
+$definition = New-AzureRmPolicyDefinition -Name "audit-resource-tag" -DisplayName "Audit for specific resource tag" -description "Audit to ensure your resources are being tagged with a specific tag" -Policy 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Tagging/audit-resource-tag/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/ATagging/audit-resource-tag/azurepolicy.parameters.json' -Mode Indexed
 $definition
 $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope>  -PolicyDefinition $definition
 $assignment
@@ -35,7 +35,7 @@ $assignment
 
 ````cli
 
-az policy definition create --name 'audit-resource-tag' --display-name 'Audit for specific resource tag' --description 'Audit to ensure your resources are being tagged with a specific tag' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Tagging/audit-resource-tag/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Tagging/audit-resource-tag/azurepolicy.parameters.json' --mode All
+az policy definition create --name 'audit-resource-tag' --display-name 'Audit for specific resource tag' --description 'Audit to ensure your resources are being tagged with a specific tag' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Tagging/audit-resource-tag/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Tagging/audit-resource-tag/azurepolicy.parameters.json' --mode Indexed
 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-location-deployments"
 

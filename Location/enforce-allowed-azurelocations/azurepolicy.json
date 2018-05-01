@@ -1,8 +1,9 @@
 {
   "properties": {
     "displayName": "Allowed locations",
-    "policyType": "BuiltIn",
+    "policyType": "Custom",
     "description": "This policy enables you to control the locations where your resources are allowed to be deployed. Use this to enforce company guidelines.",
+    "Mode": "All",
     "parameters": {
       "listOfAllowedLocations": {
         "type": "Array",

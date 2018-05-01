@@ -1,8 +1,9 @@
 {
     "properties": {
         "displayName": "Audit missing tags",
+        "policyType": "Custom",
         "description": "Audit resources that doesn't have particular tag",
-        "mode": "all",
+        "mode": "Indexed",
         "parameters": {
             "tagName": {
                 "type": "String",

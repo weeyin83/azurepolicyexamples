@@ -2,7 +2,7 @@
 {
   "properties": {
     "displayName": "Allows VM SKUs",
-    "policyType": "BuiltIn",
+    "policyType": "Custom",
     "description": "This policy enables you to audit the virtual machine SKUs that have been deployed. Use to understand what is within your environment before enforcing a policy.",
     "parameters": {
       "listOfAllowedSKUs": {
