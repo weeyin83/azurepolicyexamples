@@ -24,6 +24,6 @@ $assignment
 
 az policy definition create --name 'audit-location-deployments' --display-name 'Audit for approved datacentre locations' --description 'Ensure approved datacentres are being utilised for deployed resources' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Location/audit-allowed-azurelocations/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Location/audit-allowed-azurelocations/azurepolicy.parameters.json' --mode All
 
-az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-location-deployments" 
+az policy assignment create --name '<assignmentname>' --scope '<scope>' --policy 'audit-location-deployments'
 
 ````

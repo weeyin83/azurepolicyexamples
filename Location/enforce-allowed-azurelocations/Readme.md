@@ -23,6 +23,6 @@ $assignment
 az policy definition create --name 'enforce-location-deployments' --display-name 'Enforce Datacentre Locations' --description 'This policy enables you to control the locations where your resources are allowed to be deployed. Use this to enforce company guidelines.
 ' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Location/enforce-allowed-azurelocations/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Location/enforce-allowed-azurelocations/azurepolicy.parameters.json' --mode All
 
-az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-location-deployments"
+az policy assignment create --name '<assignmentname>' --scope '<scope>' --policy 'audit-location-deployments'
 
 ````

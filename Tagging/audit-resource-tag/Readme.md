@@ -37,6 +37,6 @@ $assignment
 
 az policy definition create --name 'audit-resource-tag' --display-name 'Audit for specific resource tag' --description 'Audit to ensure your resources are being tagged with a specific tag' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Tagging/audit-resource-tag/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Tagging/audit-resource-tag/azurepolicy.parameters.json' --mode Indexed
 
-az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-location-deployments"
+az policy assignment create --name '<assignmentname>' --scope '<scope>' --policy 'audit-location-deployments'
 
 ````

@@ -56,7 +56,7 @@ Below is an example of the code you would use to create a policy definition with
 
 az policy definition create --name 'enforce-storage-skus' --display-name 'Ensure deployment of allowed Storage SKUs only' --description 'Ensure only approved Storage SKUs can be deployed' --rules 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Storage/enforce-storage-skus/azurepolicy.parameters.json' --mode All
 
-az policy assignment create --name 'enforce storage' --scope '/subscriptions/00000000-0000-0000-000000000000' --policy "enforce-storage-skus" --params '{"listOfAllowedSKUs":{'value': [ 'Standard_GRS']}}' --sku 'standard'
+az policy assignment create --name 'enforce storage' --scope '/subscriptions/00000000-0000-0000-000000000000' --policy "enforce-storage-skus" --params "{'listOfAllowedSKUs':{'value': [ 'Standard_GRS']}}" --sku 'standard'
 ````
 
 ## Syntax for Parameters
@@ -116,7 +116,7 @@ az policy definition create --name 'enforce-location-deployments' --display-name
 Now that the policy definition is in place I can create an assignment. I need to remember to define the "listOfAllowedLocations" parameter within my code.  In this scenario I am going to set it so that only resources can be deployed to the UK West and UK South datacentres for my subscription:
 
 ````cli
-az policy assignment create --name 'Enforce deployment to UK datacentres only' --scope '/subscriptions/00000000-0000-0000-000000000000' --policy "enforce-location-deployments" --params '{'listOfAllowedLocations':{'value': [ 'ukwest', 'uksouth']}}' --sku 'standard'
+az policy assignment create --name 'Enforce deployment to UK datacentres only' --scope '/subscriptions/00000000-0000-0000-000000000000' --policy 'enforce-location-deployments' --params "{'listOfAllowedLocations':{'value': ['ukwest', 'uksouth']}}" --sku 'standard'
 ````
 
 As you can see above I used the command **--params** and then listed the name of the parameter just as it was listed in the policy definition then defined my values.  It's worth noting that while defining the values I had to use **single quotation marks** around each value and seperated multiple values with a **comma**.  Also the datacentre location values are case sensitive and have to be inputted as expected.  So for example you can't use *UKWest*, it must be *ukwest*.  If you are unsure of how to define a datacentre location run the following command and it will show you the correct syntax:
