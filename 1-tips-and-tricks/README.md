@@ -124,3 +124,18 @@ As you can see above I used the command **--params** and then listed the name of
 ````cli
 az account list-locations
 ````
+
+## Multiple Parameters
+
+Occassionally you'll come across policies that require you to determine multiple parameters for them to work correctly.  Doing this within PowerShell script is quite straight forward but doing this within CLI requires the correct formatting.  Below is an example of what you need to write when doing the policy assignment creation.
+
+### CLI with multiple parameters
+
+````cli
+az policy assignment create --name '<assightmentname>' --scope '<scope>' --policy "<policy>" --params "{'parameter1':{'value':['parameter1value']}, 'parameter2':{'value':['parameter2value']}}"
+````
+
+- When declaring your parameters you start and end with *double quotation marks and curly brackets*;
+- You surround the name and value of the parameter with *single quotation marks*;
+- The value of the parameter needs to be encased in *curly brackets as well as square brackets*;
+- Parameters are seperated with *commas*.
