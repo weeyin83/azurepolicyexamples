@@ -15,6 +15,8 @@ Below are some tips and tricks that I picked up while working with Azure Policy 
 - [Using Parameters](#using-parameters)
     + [Powershell Parameters](#powershell-parameters)
     + [CLI Parameters](#cli-parameters)
+- [Multiple Parameters](#multiple-parameters)
+    + [CLI with multiple parameters](#cli-with-multiple-parameters)
 
 ## Assigning policies with PowerShell or CLI
 
