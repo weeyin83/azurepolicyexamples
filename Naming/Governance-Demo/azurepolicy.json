@@ -1,0 +1,18 @@
+{
+  "properties": {
+      "displayName": "Match Governance naming pattern",
+      "description": "Naming pattern.",
+      "mode": "Indexed",
+      "policyRule": {
+          "if": {
+                      "not": {
+                          "field": "name",
+                          "match": "gov-?????"
+                      }
+                  },
+          "then": {
+              "effect": "deny"
+          }
+      }
+  }
+}
