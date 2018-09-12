@@ -11,7 +11,7 @@ Ensure approved datacentres are being utilised for deployed resources
 ## Try with PowerShell
 
 ````powershell
-$definition = New-AzureRmPolicyDefinition -Name "allowed-resources" -DisplayName "Only allow approved resources" -description "Only allow approved resources" -Policy 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/General/allowed-resources/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/Location/allowed-resources/azurepolicy.parameters.json' -Mode All
+$definition = New-AzureRmPolicyDefinition -Name "allowed-resources" -DisplayName "Only allow approved resources" -description "Only allow approved resources" -Policy 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/General/allowed-resources/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/weeyin83/azurepolicyexamples/master/General/allowed-resources/azurepolicy.parameters.json' -Mode All
 $definition
 $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope>  -PolicyDefinition $definition
 $assignment 
