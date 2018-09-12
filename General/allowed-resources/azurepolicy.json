@@ -19,6 +19,7 @@
           "in": [
             "Microsoft.DevTestLab/labs",
             "Microsoft.DevTestLab/labs/serviceRunners",
+            "Microsoft.DevTestLab/labs/LabVmsShutdown",
             "Microsoft.DevTestLab/labs/virtualMachines",
             "Microsoft.DevTestLab/locations/operations",
             "Microsoft.DevTestLab/schedules"
